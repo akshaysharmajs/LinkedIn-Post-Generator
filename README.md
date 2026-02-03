@@ -1,15 +1,30 @@
-# LinkedIn Post Generator
-This tool will analyze posts of a LinkedIn influencer and help them create the new posts based on the writing style in their old posts  
+# ✍️ LinkedIn Influencer Post Generator
 
+A specialized GenAI tool that allows influencers to clone their unique writing style and automate content creation. By analyzing historical post data, this tool uses **few-shot learning** to generate new content that maintains the user's authentic voice.
 
-Let's say Mohan is a LinkedIn influencer and he needs help in writing his future posts. He can feed his past LinkedIn posts to this tool and it will extract key topics. Then he can select the topic, length, language etc. and use Generate button to create a new post that will match his writing style. 
+## 🎯 Project Overview
+Designed for creators like Mohan, this tool bridges the gap between raw ideas and finished posts. Users feed their past LinkedIn content into the system, which then extracts key topics and linguistic patterns. When generating new posts, the tool references those specific examples to ensure the output matches the influencer's established brand.
 
-## Technical Architecture
+## ⚙️ Technical Architecture
 
-1. Stage 1: Collect LinkedIn posts and extract Topic, Language, Length etc. from it.
-1. Stage 2: Now use topic, language and length to generate a new post. Some of the past posts related to that specific topic, language and length will be used for few shot learning to guide the LLM about the writing style etc.
+### **Stage 1: Content Intelligence**
+* **Ingestion:** Processes historical LinkedIn posts.
+* **Extraction:** Uses **gpt-oss-120b** to analyze and categorize posts by **Topic**, **Language**, and **Length**.
+* **Style Mapping:** Identifies the unique "voice" and structural patterns used in previous successful content.
 
-## Set-up
+### **Stage 2: Contextual Generation**
+* **Few-Shot Learning:** Injects relevant past posts into the LLM prompt as style guides.
+* **Inference:** Powered by **Groq Cloud** and **Llama 3.2** for ultra-low latency generation.
+* **Customization:** Users can toggle topics, languages, and lengths to produce tailor-made drafts.
+
+## 🛠️ Tech Stack
+* **LLM:** `openai/gpt-oss-120b` & `Llama 3.2`
+* **Inference:** Groq Cloud (LPU™ Acceleration)
+* **Orchestration:** LangChain
+* **UI:** Streamlit
+
+## 🚀 Set-up
+
 1. To get started we first need to get an API_KEY from here: https://console.groq.com/keys. Inside `.env` update the value of `GROQ_API_KEY` with the API_KEY you created. 
 2. To get started, first install the dependencies using:
     ```commandline
@@ -19,8 +34,3 @@ Let's say Mohan is a LinkedIn influencer and he needs help in writing his future
    ```commandline
    streamlit run main.py
    ```
-Copyright (C) Codebasics Inc. All rights reserved.
-
-
-**Additional Terms:**
-This software is licensed under the MIT License. However, commercial use of this software is strictly prohibited without prior written permission from the author. Attribution must be given in all copies or substantial portions of the software.
